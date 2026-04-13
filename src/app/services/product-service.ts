@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { ProductType } from '../store/product.model';
 import { Apollo } from 'apollo-angular';
@@ -19,9 +20,9 @@ export class ProductService {
       price: Number(product?.price ?? 0)
     };
   }
-``
+
   // ✅ GET PRODUCTS
-  getProducts() {
+  getProducts(): Observable<ProductType[]> {
     return this.apollo.query<any>({ query: GET_PRODUCTS }).pipe(
       map((result) => {
         const items = result?.data?.listProducts?.items ?? [];
@@ -31,7 +32,7 @@ export class ProductService {
           .map((item: ProductType) => ({
             ...item,
             price: Number(item.price)
-          }));
+          })) as ProductType[];
       })
     );
   }
