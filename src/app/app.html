@@ -1,7 +1,41 @@
-<ul>
-  @for(product of products$ | async; track product){
-    <li>{{product.id}}</li>
-    <li>{{product.title}}</li>
-    <li>{{product.price}}</li>
+
+<form [formGroup]="productForm" action="" (ngSubmit)="formHandler()">
+  <div>
+  <label for="">Product Id: </label>
+  <input type="text" name="" id="" formControlName="id">
+  </div>
+  <div>
+  <label for="">Product Title: </label>
+  <input type="text" name="" id="" formControlName="title">
+  </div>
+  <div>
+  <label for="">Product Price: </label>
+  <input type="number" name="" id="" formControlName="price">
+  </div>
+
+  <button type="submit"> {{currentProductId ? 'Update' : 'Add'}} Product</button>
+  @if (currentProductId) {
+    <button type="button" (click)="cancelEdit()">Cancel Edit</button>
   }
-</ul>
+</form>
+
+@if (error$ | async; as error) {
+  @if (error) {
+    <p class="error">{{ error }}</p>
+  }
+}
+
+<section>
+  @for (product of products$ | async; track product.id) {
+    <div class="card">
+      <p>ID: {{product.id}}</p>
+      <p>Title: {{product.title}}</p>
+      <p>Price: {{product.price}}</p>
+
+      <button (click)="editProduct(product)">Edit</button>
+      <button (click)="deleteProduct(product.id)">Delete</button>
+    </div>
+  } @empty {
+    <p>No products found.</p>
+  }
+</section>

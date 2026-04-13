@@ -4,15 +4,19 @@ import { provideRouter } from '@angular/router';
 import { routes } from './app.routes';
 import { provideStore } from '@ngrx/store';
 import { provideEffects } from '@ngrx/effects';
-import { ProductEffects } from './services/product.effects';
-import { productReducer } from './services/product.reducer';
+import { ProductEffects } from "./store/product.effects"
+import { productReducer } from "./store/product.reducer"
 import { provideState } from '@ngrx/store';
+import { provideHttpClient } from '@angular/common/http';
+import { apolloProvider } from './apollo.config';
 export const appConfig: ApplicationConfig = {
   providers: [
+    provideHttpClient(),
+    apolloProvider,
     provideBrowserGlobalErrorListeners(),
     provideRouter(routes),
-    provideState({name: "products", reducer: productReducer}),
     provideStore(),
+    provideState({name: "products", reducer: productReducer}),
     provideEffects(ProductEffects),
   ],
 };

@@ -1,0 +1,29 @@
+section{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap:10px;
+}
+.card{
+    border:2px solid black;
+    width: 120px;
+    height: 150px;
+    border-radius: 20px;
+    padding: 10px;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    border: 2px solid black;
+    width: 300px;
+    padding: 20px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+}
+
+.error {
+    color: #b00020;
+    font-weight: 600;
+}

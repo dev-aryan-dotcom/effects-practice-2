@@ -1,0 +1,30 @@
+{
+  "products": [
+    {
+      "id": "1",
+      "title": "Wireless Mouse",
+      "price": 599
+    },
+    {
+      "id": "2",
+      "title": "Mechanical Keyboard",
+      "price": 2490
+    },
+    {
+      "id": "3",
+      "title": "USB-C Charger",
+      "price": 999
+    },
+    {
+      "id": "4",
+      "title": "Bluetooth Headphone",
+      "price": 1999
+    },
+    {
+      "id": "5",
+      "title": "Laptop Stand",
+      "price": 1299
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}
